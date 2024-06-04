@@ -1,10 +1,9 @@
 ﻿using ScreenSound.Models;
-using System.Diagnostics;
 
 Banda wallows = new Banda("Wallows");
-wallows.AdicionarNota(10);
-wallows.AdicionarNota(8);
-wallows.AdicionarNota(6);
+wallows.AdicionarNota(new Avaliacao(10));
+wallows.AdicionarNota(new Avaliacao(8));
+wallows.AdicionarNota(new Avaliacao(6));
 Banda tameImpala = new Banda("Tame Impala");
 
 // StringComparer.OrdinalIgnoreCase: Permite que o usuário encontre a banda sem problemas de letras maiúsculas ou minúsculas
@@ -18,13 +17,13 @@ void ExibirLogo()
 {
     Console.WriteLine(@"
 
-░██████╗░█████╗░██████╗░███████╗███████╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
-██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝████╗░██║  ██╔════╝██╔══██╗██║░░░██║████╗░██║██╔══██╗
-╚█████╗░██║░░╚═╝██████╔╝█████╗░░█████╗░░██╔██╗██║  ╚█████╗░██║░░██║██║░░░██║██╔██╗██║██║░░██║
-░╚═══██╗██║░░██╗██╔══██╗██╔══╝░░██╔══╝░░██║╚████║  ░╚═══██╗██║░░██║██║░░░██║██║╚████║██║░░██║
-██████╔╝╚█████╔╝██║░░██║███████╗███████╗██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
-╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░
-");
+    ░██████╗░█████╗░██████╗░███████╗███████╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
+    ██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝████╗░██║  ██╔════╝██╔══██╗██║░░░██║████╗░██║██╔══██╗
+    ╚█████╗░██║░░╚═╝██████╔╝█████╗░░█████╗░░██╔██╗██║  ╚█████╗░██║░░██║██║░░░██║██╔██╗██║██║░░██║
+    ░╚═══██╗██║░░██╗██╔══██╗██╔══╝░░██╔══╝░░██║╚████║  ░╚═══██╗██║░░██║██║░░░██║██║╚████║██║░░██║
+    ██████╔╝╚█████╔╝██║░░██║███████╗███████╗██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
+    ╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░
+    ");
     Console.WriteLine("Boas vindas ao Screen Sound 2.0!");
 }
 
@@ -65,7 +64,7 @@ void ExibirOpcoesDoMenu()
             ExibirDetalhes();
             break;
         case -1:
-            Console.WriteLine("Tchau tchau :)");
+            Console.WriteLine("Tchau tchau! :)");
             break;
         default:
             Console.WriteLine("Opção inválida");
@@ -154,9 +153,9 @@ void AvaliarUmaBanda()
     {
         Banda banda = bandasRegistradas[nomeDaBanda];
         Console.Write($"Qual a nota que a banda {nomeDaBanda} merece: ");
-        int nota = int.Parse(Console.ReadLine()!);
+        Avaliacao nota = Avaliacao.Parse(Console.ReadLine()!);
         banda.AdicionarNota(nota);
-        Console.WriteLine($"\nA nota {nota} foi registrada com sucesso para a banda {nomeDaBanda}");
+        Console.WriteLine($"\nA nota {nota.Nota} foi registrada com sucesso para a banda {nomeDaBanda}");
         Thread.Sleep(2000);
         Console.Clear();
         ExibirOpcoesDoMenu();
@@ -176,13 +175,15 @@ void ExibirDetalhes()
 {
     Console.Clear();
     ExibirTituloDaOpcao("Exibir detalhes da banda");
+    //ExibirNomesBandas();
     Console.Write("Digite o nome da banda que deseja conhecer melhor: ");
+
     string nomeDaBanda = Console.ReadLine()!.ToLower();
     if (bandasRegistradas.ContainsKey(nomeDaBanda))
     {
         Banda banda = bandasRegistradas[nomeDaBanda];
         Console.WriteLine($"\nA média da banda {nomeDaBanda} é {banda.Media}.");
-        Console.WriteLine("Digite uma tecla para votar ao menu principal");
+        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
         Console.ReadKey();
         Console.Clear();
         ExibirOpcoesDoMenu();
@@ -196,5 +197,15 @@ void ExibirDetalhes()
         ExibirOpcoesDoMenu();
     }
 }
+
+//void ExibirNomesBandas()
+//{
+//    Console.WriteLine("Bandas registradas:");
+//    foreach (var nomeBanda in bandasRegistradas.Keys)
+//    {
+//        Console.WriteLine(nomeBanda);
+//    }
+//    Console.WriteLine();
+//}
 
 ExibirOpcoesDoMenu();

@@ -1,5 +1,4 @@
 ﻿using ScreenSound.Models;
-
 namespace ScreenSound.Menus;
 
 internal class MenuRegistrarAlbum : Menu
@@ -21,7 +20,7 @@ internal class MenuRegistrarAlbum : Menu
              * ESPAÇO RESERVADO PARA COMPLETAR A FUNÇÃO
              */
             Console.WriteLine($"O álbum {tituloAlbum} de {nomeDaBanda} foi registrado com sucesso!");
-            Thread.Sleep(2000);
+            Thread.Sleep(1850);
             Console.Clear();
         }
         else

@@ -1,11 +1,20 @@
 ﻿using ScreenSound.Menus;
 using ScreenSound.Models;
+using OpenAI_API;
 
 Banda wallows = new Banda("Wallows");
 wallows.AdicionarNota(new Avaliacao(10));
 wallows.AdicionarNota(new Avaliacao(8));
 wallows.AdicionarNota(new Avaliacao(6));
 Banda tameImpala = new Banda("Tame Impala");
+
+// TESTE ------------------------------------------------------------------------------------------------
+var client = new OpenAIAPI(""); // Chave do chat gpt
+var chat = client.Chat.CreateConversation();
+chat.AppendSystemMessage("Resuma a banda Wallows em 1 parágrafo, adotando um estilo informal.");
+var resposta = await chat.GetResponseFromChatbotAsync(); // Await espera o término da ação para continuar
+Console.WriteLine(resposta);
+// ------------------------------------------------------------------------------------------------------
 
 // StringComparer.OrdinalIgnoreCase: Permite que o usuário encontre a banda sem problemas de letras maiúsculas ou minúsculas
 Dictionary<string, Banda> bandasRegistradas = new Dictionary<string, Banda>(StringComparer.OrdinalIgnoreCase)
@@ -69,4 +78,4 @@ void ExibirOpcoesDoMenu()
     }
 }
 
-ExibirOpcoesDoMenu();
+//ExibirOpcoesDoMenu();

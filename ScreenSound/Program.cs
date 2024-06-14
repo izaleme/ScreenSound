@@ -12,8 +12,18 @@ Banda tameImpala = new Banda("Tame Impala");
 var client = new OpenAIAPI(""); // Chave do chat gpt
 var chat = client.Chat.CreateConversation();
 chat.AppendSystemMessage("Resuma a banda Wallows em 1 parágrafo, adotando um estilo informal.");
-var resposta = await chat.GetResponseFromChatbotAsync(); // Await espera o término da ação para continuar
-Console.WriteLine(resposta);
+
+try
+{
+    var resposta = await chat.GetResponseFromChatbotAsync(); // Await espera o término da ação para continuar
+    Console.WriteLine(resposta);
+}
+catch (Exception err)
+{
+    Console.WriteLine("Ocorreu um erro:");
+    Console.WriteLine("----------------");
+    Console.WriteLine(err.Message);
+}
 // ------------------------------------------------------------------------------------------------------
 
 // StringComparer.OrdinalIgnoreCase: Permite que o usuário encontre a banda sem problemas de letras maiúsculas ou minúsculas

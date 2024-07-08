@@ -39,19 +39,25 @@ namespace ScreenSound.Test
         }
 
         [Theory]
-        [InlineData("What Once Was", "Her's", 160, true)]
-        [InlineData("A Horse With No Name", "America", 300, false)]
-        public void RetornaFichaTecnicaComDadosEntrada(string nomeMusica, string nomeBanda, int duracaoMsc, bool disponivel)
+        [InlineData("What Once Was", "Her's", 160, true, 2017)]
+        [InlineData("A Horse With No Name", "America", 300, false, null)]
+        public void RetornaFichaTecnicaComDadosEntrada(string nomeMusica, string nomeBanda, int duracaoMsc, bool disponivel, int? anoLancamento)
         {
             // Arrange
             Banda banda = new Banda(nomeBanda);
             Musica musica = new Musica(banda, nomeMusica);
             musica.Duracao = duracaoMsc;
             musica.Disponivel = disponivel;
+            musica.AnoLancamento = anoLancamento;
 
             string expectedOutput = $"Nome: {musica.Nome}\r\n" +
                                     $"Artista: {banda.Nome}\r\n" +
                                     $"Duração: {musica.Duracao}\r\n";
+
+            if (anoLancamento != null)
+            {
+                expectedOutput += $"Ano de Lançamento: {anoLancamento}\r\n";
+            }
 
             expectedOutput += musica.Disponivel ? "Disponível no plano.\r\n" : "Adquira o plano Plus+\r\n";
 

@@ -67,5 +67,37 @@ namespace ScreenSound.Test
                 Assert.Equal(expectedOutput, result);
             }
         }
+
+        [Theory]
+        [InlineData("ABBA", "Test Song 1", null)]
+        [InlineData("Wallows", "Test Song 2", -1)]
+        [InlineData("Red Hot Chili Peppers", "Test Song 3", 0)]
+        public void RetornaAnoDeLancamentoNuloQuandoValorEhMenorQueZero(string nomeBanda, string nomeMusica, int? anoInvalido)
+        {
+            // Arrange
+            Banda banda = new Banda(nomeBanda);
+            Musica musica = new Musica(banda, nomeMusica);
+
+            // Act
+            musica.AnoLancamento = anoInvalido;
+
+            // Assert
+            Assert.Null(musica.AnoLancamento);
+        }
+
+        [Fact]
+        public void RetornaLancamentoQuandoDadosValidos()
+        {
+            // Arrange
+            int anoLancam = 2024;
+            Banda banda = new Banda("Billie Eilish");
+            Musica musica = new Musica(banda, "Chihiro");
+
+            // Act
+            musica.AnoLancamento = anoLancam;
+
+            // Assert
+            Assert.Equal(anoLancam, musica.AnoLancamento);
+        }
     }
 }

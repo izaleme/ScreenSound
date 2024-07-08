@@ -2,6 +2,8 @@
 
 internal class Musica
 {
+    private int? anoLancamento;
+
     public Musica(Banda artista, string nome)
     {
         Artista = artista;
@@ -13,12 +15,30 @@ internal class Musica
     public int Duracao { get; set; }
     public bool Disponivel { get; set; }
     public string DescricaoResumida => $"A música {Nome} pertence à banda {Artista}";
+    public int? AnoLancamento
+    {
+        get => anoLancamento;
+        set
+        {
+            if (value <= 0)
+            {
+                anoLancamento = null;
+            }
+            else
+            {
+                anoLancamento = value;
+            }
+        }
+    }
+
+    public Genero Genero { get; set; }
 
     public void ExibirFichaTecnica()
     {
         Console.WriteLine($"Nome: {Nome}");
         Console.WriteLine($"Artista: {Artista.Nome}");
         Console.WriteLine($"Duração: {Duracao}");
+
         if (Disponivel)
         {
             Console.WriteLine("Disponível no plano.");

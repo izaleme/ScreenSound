@@ -61,7 +61,8 @@ opcoes.Add(4, new MenuAvaliarBanda());
 opcoes.Add(5, new MenuAvaliarAlbum());
 opcoes.Add(6, new MenuExibirDetalhesBanda());
 opcoes.Add(7, new MenuRegistrarPodcast());
-opcoes.Add(8, new MenuExibirDetalhesPodcast());
+opcoes.Add(8, new MenuRegistrarEpisodio());
+opcoes.Add(9, new MenuExibirDetalhesPodcast());
 opcoes.Add(-1, new MenuSair());
 
 void ExibirLogo()
@@ -87,6 +88,9 @@ void ExibirOpcoesDoMenu()
     Console.WriteLine("Digite 4 para avaliar uma banda");
     Console.WriteLine("Digite 5 para avaliar um álbum");
     Console.WriteLine("Digite 6 para exibir os detalhes de uma banda");
+    Console.WriteLine("Digite 7 para registrar um podcast");
+    Console.WriteLine("Digite 8 para registrar um episódio");
+    Console.WriteLine("Digite 9 para exibir detalhes de um podcast");
     Console.WriteLine("Digite -1 para sair");
 
     Console.Write("\nDigite a sua opção: ");
@@ -101,7 +105,16 @@ void ExibirOpcoesDoMenu()
     if (opcoes.ContainsKey(opcaoEscolhidaNumerica))
     {
         Menu menuExibicao = opcoes[opcaoEscolhidaNumerica];
-        menuExibicao.Executar(bandasRegistradas);
+
+        if (opcaoEscolhidaNumerica == 7 || opcaoEscolhidaNumerica == 8 || opcaoEscolhidaNumerica == 9)
+        {
+            menuExibicao.Executar();
+        }
+        else
+        {
+            menuExibicao.Executar(bandasRegistradas);
+        }
+       
         if (opcaoEscolhidaNumerica > 0) ExibirOpcoesDoMenu();
     }
     else

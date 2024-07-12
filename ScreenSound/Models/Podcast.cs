@@ -16,10 +16,10 @@ internal class Podcast
 
     #region Builders
 
-    public Podcast(string strHost, string strNome)
+    public Podcast(string strNome, string strHost)
     {
-        Host = strHost;
         Nome = strNome;
+        Host = strHost;
     }
 
     #endregion

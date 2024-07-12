@@ -13,8 +13,14 @@ internal class Menu
         Console.WriteLine(asteriscos + "\n");
     }
 
-    public virtual void Executar(Dictionary<string, Banda> bandasRegistradas) // virtual = método que pode ser sobrescrito
+    public virtual void Executar()
     {
         Console.Clear();
     }
+
+    public virtual void Executar(Dictionary<string, Banda> bandasRegistradas) // virtual é um método que pode ser sobrescrito
+    {
+        Console.Clear();
+    }
+    
 }

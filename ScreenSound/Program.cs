@@ -2,11 +2,31 @@
 using ScreenSound.Models;
 using OpenAI_API;
 
+// Adicionando dados de base Bandas
 Banda wallows = new Banda("Wallows");
 wallows.AdicionarNota(new Avaliacao(10));
 wallows.AdicionarNota(new Avaliacao(8));
 wallows.AdicionarNota(new Avaliacao(6));
 Banda tameImpala = new Banda("Tame Impala");
+
+// Adicionando dados de base Podcasts
+Episodio ep1 = new Episodio(1, "Radio Silêncio", 25);
+ep1.AdicionarConvidados("Ash");
+
+Episodio ep2 = new Episodio(1, "Galdino Pataxó", 82);
+ep2.AdicionarConvidados("Spotify");
+ep2.AdicionarConvidados("Pataxó");
+
+Episodio ep3 = new Episodio(2, "Caso Pesseghini", 91);
+ep3.AdicionarConvidados("Steh Ferreira");
+
+Podcast podcast1 = new Podcast("Aled", "UniverseCity");
+podcast1.AdicionarEpisodio(ep1);
+
+Podcast podcast2 = new Podcast("Dona Café", "Café com Crime");
+podcast2.AdicionarEpisodio(ep2);
+podcast2.AdicionarEpisodio(ep3);
+
 
 // TESTE ------------------------------------------------------------------------------------------------
 //var client = new OpenAIAPI(""); // Chave do chat gpt
@@ -39,7 +59,9 @@ opcoes.Add(2, new MenuRegistrarAlbum());
 opcoes.Add(3, new MenuMostrarBandas());
 opcoes.Add(4, new MenuAvaliarBanda());
 opcoes.Add(5, new MenuAvaliarAlbum());
-opcoes.Add(6, new MenuExibirDetalhes());
+opcoes.Add(6, new MenuExibirDetalhesBanda());
+opcoes.Add(7, new MenuRegistrarPodcast());
+opcoes.Add(8, new MenuExibirDetalhesPodcast());
 opcoes.Add(-1, new MenuSair());
 
 void ExibirLogo()

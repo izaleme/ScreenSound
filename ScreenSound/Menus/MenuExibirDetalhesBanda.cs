@@ -2,7 +2,7 @@
 
 namespace ScreenSound.Menus;
 
-internal class MenuExibirDetalhes : Menu
+internal class MenuExibirDetalhesBanda : Menu
 {
     public override void Executar(Dictionary<string, Banda> bandasRegistradas) // override sobrescreve o método
     {

@@ -20,10 +20,10 @@ ep2.AdicionarConvidados("Pataxó");
 Episodio ep3 = new Episodio(2, "Caso Pesseghini", 91);
 ep3.AdicionarConvidados("Steh Ferreira");
 
-Podcast podcast1 = new Podcast("Aled", "UniverseCity");
+Podcast podcast1 = new Podcast("UniverseCity", "Aled");
 podcast1.AdicionarEpisodio(ep1);
 
-Podcast podcast2 = new Podcast("Dona Café", "Café com Crime");
+Podcast podcast2 = new Podcast("Café com Crime", "Dona Café");
 podcast2.AdicionarEpisodio(ep2);
 podcast2.AdicionarEpisodio(ep3);
 
@@ -53,6 +53,12 @@ Dictionary<string, Banda> bandasRegistradas = new Dictionary<string, Banda>(Stri
     { tameImpala.Nome, tameImpala }
 };
 
+Dictionary<string, Podcast> podcastsRegistrados = new Dictionary<string, Podcast>(StringComparer.OrdinalIgnoreCase)
+{
+    { podcast1.Nome, podcast1 },
+    { podcast2.Nome, podcast2 }
+};
+
 Dictionary<int, Menu> opcoes = new();
 opcoes.Add(1, new MenuRegistrarBanda());
 opcoes.Add(2, new MenuRegistrarAlbum());
@@ -76,7 +82,7 @@ void ExibirLogo()
     ██████╔╝╚█████╔╝██║░░██║███████╗███████╗██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
     ╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░
     ");
-    Console.WriteLine("Boas vindas ao Screen Sound 2.0!");
+    Console.WriteLine("Boas vindas ao Screen Sound!");
 }
 
 void ExibirOpcoesDoMenu()
@@ -108,13 +114,13 @@ void ExibirOpcoesDoMenu()
 
         if (opcaoEscolhidaNumerica == 7 || opcaoEscolhidaNumerica == 8 || opcaoEscolhidaNumerica == 9)
         {
-            menuExibicao.Executar();
+            menuExibicao.Executar(podcastsRegistrados);
         }
         else
         {
             menuExibicao.Executar(bandasRegistradas);
         }
-       
+
         if (opcaoEscolhidaNumerica > 0) ExibirOpcoesDoMenu();
     }
     else

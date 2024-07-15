@@ -4,10 +4,40 @@ namespace ScreenSound.Menus;
 
 internal class MenuRegistrarEpisodio : Menu
 {
-    public override void Executar()
+    #region Attributes/Properties
+
+    private bool adicionaPodcast = false;
+
+    private Podcast podcast { get; }
+
+
+    #endregion
+
+    #region Builders
+
+    public MenuRegistrarEpisodio()
     {
-        base.Executar();
-        ExibirTituloDaOpcao("Registro de Episódios");
+        adicionaPodcast = false;
+    }
+
+    public MenuRegistrarEpisodio(Podcast podcastt, Dictionary<string, Podcast> podcastsRegistrados)
+    {
+        adicionaPodcast = true;
+        podcast = podcastt;
+        Executar(podcastsRegistrados);
+    }
+
+    #endregion
+
+    #region Methods
+
+    public override void Executar(Dictionary<string, Podcast> podcastsRegistrados)
+    {
+        if (!adicionaPodcast)
+        {
+            base.Executar(podcastsRegistrados);
+            ExibirTituloDaOpcao("Registro de Episódios");
+        }
 
         Console.Write("Digite o nome do episódio que deseja registrar: ");
         string nomeEpisodio = Console.ReadLine()!;
@@ -27,6 +57,11 @@ internal class MenuRegistrarEpisodio : Menu
 
         Episodio newEpisodio = new Episodio(ordemEpisodio, nomeEpisodio, duracaoEpisodio);
         Console.WriteLine("\nEpisódio registrado com sucesso!!");
+
+        if (adicionaPodcast)
+        {
+            podcast.AdicionarEpisodio(newEpisodio);
+        }
 
         Console.WriteLine("Deseja adicionar convidados ao episódio? (1 = SIM, 2 = NÃO)");
         string addConvidados = Console.ReadLine()!;
@@ -51,8 +86,8 @@ internal class MenuRegistrarEpisodio : Menu
                         Console.WriteLine("\nConvidado adicionado com sucesso!");
                         Console.Write("Digite outro nome de convidado ou -1 para sair: ");
                     }
-
-                    convidado = Console.ReadLine()!; // Atualiza a variável convidado
+                    
+                    convidado = Console.ReadLine()!; // Atualiza a variável 'convidado'
                 }
             }
         }
@@ -65,4 +100,6 @@ internal class MenuRegistrarEpisodio : Menu
         Thread.Sleep(1000);
         Console.Clear();
     }
+
+    #endregion
 }

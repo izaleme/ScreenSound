@@ -23,8 +23,8 @@ internal class MenuRegistrarAlbum : Menu
         else
         {
             Console.WriteLine($"\nA banda {nomeDaBanda} não foi encontrada!");
-            Console.WriteLine("Digite uma tecla para voltar ao menu principal");
-            Console.ReadKey();
+            Console.Write("Retornando ao menu principal... ");
+            Thread.Sleep(2200);
             Console.Clear();
         }
     }

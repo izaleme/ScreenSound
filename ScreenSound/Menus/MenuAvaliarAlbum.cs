@@ -28,17 +28,17 @@ internal class MenuAvaliarAlbum : Menu
             }
             else
             {
-                Console.WriteLine($"\nO álbum {tituloAlbum} não foi encontrado!");
-                Console.WriteLine("Digite uma tecla para voltar ao menu principal");
-                Console.ReadKey();
+                Console.WriteLine($"O álbum {tituloAlbum} não foi encontrado!");
+                Console.Write("\nRetornando ao menu principal... ");
+                Thread.Sleep(2200);
                 Console.Clear();
             }
         }
         else
         {
-            Console.WriteLine($"\nA banda {nomeDaBanda} não foi encontrada!");
-            Console.WriteLine("Digite uma tecla para voltar ao menu principal");
-            Console.ReadKey();
+            Console.WriteLine($"A banda {nomeDaBanda} não foi encontrada!");
+            Console.Write("\nRetornando ao menu principal... ");
+            Thread.Sleep(2200);
             Console.Clear();
         }
     }

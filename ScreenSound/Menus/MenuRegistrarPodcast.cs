@@ -4,9 +4,9 @@ namespace ScreenSound.Menus;
 
 internal class MenuRegistrarPodcast : Menu
 {
-    public override void Executar()
+    public override void Executar(Dictionary<string, Podcast> podcastsRegistrados)
     {
-        base.Executar();
+        base.Executar(podcastsRegistrados);
         ExibirTituloDaOpcao("Registro de Podcasts");
 
         Console.Write("Digite o nome do podcast que deseja registrar: ");
@@ -16,12 +16,22 @@ internal class MenuRegistrarPodcast : Menu
         string hostPodcast = Console.ReadLine()!;
 
         Podcast newPodcast = new Podcast(hostPodcast, nomePodcast);
+        podcastsRegistrados.Add(nomePodcast, newPodcast);
         Console.WriteLine("\nPodcast registrado com sucesso!");
 
-        // Aqui posso criar depois uma opção para adicionar episodios ao podcast se o usuario quiser
+        Console.Write("\nDeseja adicionar episódios ao podcast? ");
+        string answer = Console.ReadLine()!;
 
-        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
-        Console.ReadKey();
-        Console.Clear();
+        if (answer == "1" || answer.ToLower() == "sim" || answer.ToLower() == "s" || answer.ToLower() == "ss")
+        {
+            Console.WriteLine();
+            new MenuRegistrarEpisodio(newPodcast, podcastsRegistrados);
+        }
+        else
+        {
+            Console.Write("Aperte qualquer tecla para voltar ao menu principal ");
+            Console.ReadKey();
+            Console.Clear();
+        }
     }
 }

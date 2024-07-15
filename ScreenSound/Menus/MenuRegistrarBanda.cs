@@ -21,7 +21,7 @@ internal class MenuRegistrarBanda : Menu
         //banda.Resumo = resposta;
 
         Console.WriteLine($"A banda {nomeDaBanda} foi registrada com sucesso!");
-        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+        Console.Write("\nAperte qualquer tecla para voltar ao menu principal... ");
         Console.ReadKey();
         Console.Clear();
     }

@@ -15,20 +15,28 @@ internal class MenuExibirDetalhesBanda : Menu
         {
             Banda banda = bandasRegistradas[nomeDaBanda];
             Console.WriteLine(banda.Resumo);
-            Console.WriteLine($"\nA média da banda {nomeDaBanda} é {banda.Media}.");
-            Console.WriteLine("\nDiscografia:");
+            Console.WriteLine($"A média da banda {nomeDaBanda} é {banda.Media}.");
 
-            foreach (Album album in banda.Albuns)
+            if (banda.Albuns.Count > 0)
             {
-                Console.WriteLine($"{album.Nome} -> {album.Media}");
+                Console.WriteLine("\nDiscografia:");
+
+                foreach (Album album in banda.Albuns)
+                {
+                    Console.WriteLine($"{album.Nome} -> {album.Media}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nenhum álbum foi registrado ainda.");
             }
         }
         else
         {
-            Console.WriteLine($"\nA banda {nomeDaBanda} não foi encontrada!");
+            Console.WriteLine($"A banda {nomeDaBanda} não foi encontrada!");
         }
 
-        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+        Console.Write("\nAperte qualquer tecla para voltar ao menu principal ");
         Console.ReadKey();
         Console.Clear();
     }

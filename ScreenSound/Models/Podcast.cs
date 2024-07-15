@@ -33,7 +33,7 @@ internal class Podcast
 
     public void ExibirDetalhes()
     {
-        Console.WriteLine($"Podcast {Nome} apresentado por {Host}");
+        Console.WriteLine($"\nPodcast {Nome} apresentado por {Host}");
         Console.WriteLine($"Total de episódios: {TotalEpisodios}");
         if (episodios.Count > 0)
         {

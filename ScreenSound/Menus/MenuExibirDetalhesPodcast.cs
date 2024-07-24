@@ -24,7 +24,7 @@ internal class MenuExibirDetalhesPodcast : Menu
             {
                 loop = false;
                 Podcast podcast = podcastsRegistrados[nomePodcast];
-                podcast.ExibirDetalhes());
+                podcast.ExibirDetalhes();
             }
             else
             {

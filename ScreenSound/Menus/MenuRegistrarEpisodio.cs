@@ -1,4 +1,5 @@
 ﻿using ScreenSound.Models;
+using System.Text.RegularExpressions;
 
 namespace ScreenSound.Menus;
 
@@ -47,7 +48,7 @@ internal class MenuRegistrarEpisodio : Menu
         {
             Console.WriteLine("Opção inválida!");
             Console.WriteLine("Retornando ao menu principal...");
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             Console.Clear();
             return;
         }
@@ -63,41 +64,50 @@ internal class MenuRegistrarEpisodio : Menu
             podcast.AdicionarEpisodio(newEpisodio);
         }
 
-        Console.WriteLine("Deseja adicionar convidados ao episódio? (1 = SIM, 2 = NÃO)");
+        Console.Write("\nDeseja adicionar convidados ao episódio? ");
         string addConvidados = Console.ReadLine()!;
 
-        if (int.TryParse(addConvidados, out int result))
+        if (Regex.IsMatch(addConvidados.ToLower(), @"^(1|sim|s|ss|yes)$"))
         {
-            if (result == 1)
-            {
-                const string num = "-1";
-                Console.Write("Digite o nome do convidado ou -1 para sair: ");
-                string convidado = Console.ReadLine()!;
+            const string num = "-1";
+            Console.Write("Digite o nome do convidado ou -1 para sair: ");
+            string convidado = Console.ReadLine()!;
 
-                while (convidado != num)
+            while (convidado != num)
+            {
+                if (int.TryParse(convidado, out int numConvidado))
                 {
-                    if (int.TryParse(convidado, out int numConvidado))
-                    {
-                        Console.Write("O convidado é um número. Digite um nome válido: ");
-                    }
-                    else
-                    {
-                        newEpisodio.AdicionarConvidados(convidado);
-                        Console.WriteLine("\nConvidado adicionado com sucesso!");
-                        Console.Write("Digite outro nome de convidado ou -1 para sair: ");
-                    }
-                    
-                    convidado = Console.ReadLine()!; // Atualiza a variável 'convidado'
+                    Console.Write("O convidado é um número. Digite um nome válido: ");
                 }
+                else
+                {
+                    newEpisodio.AdicionarConvidados(convidado);
+                    Console.WriteLine("\nConvidado adicionado com sucesso!");
+                    Console.Write("Digite outro nome de convidado ou -1 para sair: ");
+                }
+
+                convidado = Console.ReadLine()!; // Atualiza a variável 'convidado'
             }
         }
-        else
+
+        if (!adicionaPodcast)
         {
-            Console.WriteLine("Opção inválida!");
+            Console.Write("\nDigite o nome do podcast ao qual você vai adicionar: ");
+            string nomePodcast = Console.ReadLine()!;
+
+            if (podcastsRegistrados.ContainsKey(nomePodcast))
+            {
+                Podcast podcast = podcastsRegistrados[nomePodcast.Trim()]; // Recupera o objeto Podcast do dicionário
+                podcast.AdicionarEpisodio(newEpisodio); // Adiciona o episódio ao podcast
+            }
+            else
+            {
+                Console.WriteLine("Podcast não encontrado!");
+            }
         }
 
         Console.WriteLine("Retornando ao menu principal...");
-        Thread.Sleep(1000);
+        Thread.Sleep(2200);
         Console.Clear();
     }
 

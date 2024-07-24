@@ -13,14 +13,18 @@ internal class Menu
         Console.WriteLine(asteriscos + "\n");
     }
 
-    public virtual void Executar(Dictionary<string, Podcast> podcastsRegistrados)
+    public virtual void Executar(Dictionary<string, Banda> bandasRegistradas)
     {
-        Console.Clear();
+        LimparConsole();
     }
 
-    public virtual void Executar(Dictionary<string, Banda> bandasRegistradas) // virtual é um método que pode ser sobrescrito
+    public virtual void Executar(Dictionary<string, Podcast> podcastsRegistrados)
+    {
+        LimparConsole();
+    }
+
+    private void LimparConsole()
     {
         Console.Clear();
     }
-    
 }

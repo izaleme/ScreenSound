@@ -11,6 +11,7 @@
 - [x] POO: Isolando os Menus
 - [x] Criação da Interface
 - [ ] Adição de Inteligência Artificial
+- [ ] Adição de API
 
 ### Autor
 ---

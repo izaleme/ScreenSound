@@ -4,6 +4,8 @@
 	🚧 C# Project 🚀 Em construção...  🚧
 </h4>
 
+#### API base do projeto: <a href="https://github.com/izaleme/ScreenSoundAPI/tree/main">GitHub</a>
+
 ### Features
 
 - [x] Funcionalidades Gerais

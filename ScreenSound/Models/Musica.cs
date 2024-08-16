@@ -17,7 +17,7 @@ internal class Musica
     public int? AnoLancamento
     {
         get => anoLancamento;
-        set => anoLancamento = value <= 0 ? null : value;
+        set => anoLancamento = value <= 0 ? (int?)null : value;
     }
 
     public Genero? Genero { get; set; }

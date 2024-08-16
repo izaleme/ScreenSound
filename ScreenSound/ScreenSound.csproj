@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -13,6 +13,12 @@
 	
   <ItemGroup>
     <InternalsVisibleTo Include="ScreenSound.Test" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Reference Include="ScreenSoundAPI">
+      <HintPath>..\..\dll-net\net8.0\ScreenSoundAPI.dll</HintPath>
+    </Reference>
   </ItemGroup>
 	
   <ItemGroup>

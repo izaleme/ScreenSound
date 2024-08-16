@@ -28,23 +28,23 @@ podcast2.AdicionarEpisodio(ep2);
 podcast2.AdicionarEpisodio(ep3);
 
 
-// TESTE ------------------------------------------------------------------------------------------------
-//var client = new OpenAIAPI(""); // Chave do chat gpt
-//var chat = client.Chat.CreateConversation();
-//chat.AppendSystemMessage("Resuma a banda Wallows em 1 parágrafo, adotando um estilo informal.");
+/* //TESTE ------------------------------------------------------------------------------------------------
+var client = new OpenAIAPI(""); // Chave do chat gpt
+var chat = client.Chat.CreateConversation();
+chat.AppendSystemMessage("Resuma a banda Wallows em 1 parágrafo, adotando um estilo informal.");
 
-//try
-//{
-//    var resposta = await chat.GetResponseFromChatbotAsync(); // Await espera o término da ação para continuar
-//    Console.WriteLine(resposta);
-//}
-//catch (Exception err)
-//{
-//    Console.WriteLine("Ocorreu um erro:");
-//    Console.WriteLine("----------------");
-//    Console.WriteLine(err.Message);
-//}
-// ------------------------------------------------------------------------------------------------------
+try
+{
+    var resposta = await chat.GetResponseFromChatbotAsync(); // Await espera o término da ação para continuar
+    Console.WriteLine(resposta);
+}
+catch (Exception err)
+{
+    Console.WriteLine("Ocorreu um erro:");
+    Console.WriteLine("----------------");
+    Console.WriteLine(err.Message);
+}
+// ------------------------------------------------------------------------------------------------------ */
 
 // StringComparer.OrdinalIgnoreCase: Permite que o usuário encontre a banda sem problemas de letras maiúsculas ou minúsculas
 Dictionary<string, Banda> bandasRegistradas = new Dictionary<string, Banda>(StringComparer.OrdinalIgnoreCase)
@@ -60,15 +60,16 @@ Dictionary<string, Podcast> podcastsRegistrados = new Dictionary<string, Podcast
 };
 
 Dictionary<int, Menu> opcoes = new();
-opcoes.Add(1, new MenuRegistrarBanda());
-opcoes.Add(2, new MenuRegistrarAlbum());
-opcoes.Add(3, new MenuMostrarBandas());
-opcoes.Add(4, new MenuAvaliarBanda());
-opcoes.Add(5, new MenuAvaliarAlbum());
-opcoes.Add(6, new MenuExibirDetalhesBanda());
-opcoes.Add(7, new MenuRegistrarPodcast());
-opcoes.Add(8, new MenuRegistrarEpisodio());
-opcoes.Add(9, new MenuExibirDetalhesPodcast());
+opcoes.Add(1, new MenuMostrarMusicas());
+opcoes.Add(2, new MenuMostrarBandas());
+opcoes.Add(3, new MenuRegistrarBanda());
+opcoes.Add(4, new MenuRegistrarAlbum());
+opcoes.Add(5, new MenuAvaliarBanda());
+opcoes.Add(6, new MenuAvaliarAlbum());
+opcoes.Add(7, new MenuExibirDetalhesBanda());
+opcoes.Add(8, new MenuRegistrarPodcast());
+opcoes.Add(9, new MenuRegistrarEpisodio());
+opcoes.Add(10, new MenuExibirDetalhesPodcast());
 opcoes.Add(-1, new MenuSair());
 
 void ExibirLogo()
@@ -88,15 +89,16 @@ void ExibirLogo()
 void ExibirOpcoesDoMenu()
 {
     ExibirLogo();
-    Console.WriteLine("\nDigite 1 para registrar uma banda");
-    Console.WriteLine("Digite 2 para registrar o álbum de uma banda");
-    Console.WriteLine("Digite 3 para mostrar todas as bandas");
-    Console.WriteLine("Digite 4 para avaliar uma banda");
-    Console.WriteLine("Digite 5 para avaliar um álbum");
-    Console.WriteLine("Digite 6 para exibir os detalhes de uma banda");
-    Console.WriteLine("Digite 7 para registrar um podcast");
-    Console.WriteLine("Digite 8 para registrar um episódio");
-    Console.WriteLine("Digite 9 para exibir detalhes de um podcast");
+    Console.WriteLine("\nDigite 1 para exibir todas as músicas");
+    Console.WriteLine("Digite 2 para mostrar todas as bandas");
+    Console.WriteLine("Digite 3 para registrar uma banda");
+    Console.WriteLine("Digite 4 para registrar o álbum de uma banda");
+    Console.WriteLine("Digite 5 para avaliar uma banda");
+    Console.WriteLine("Digite 6 para avaliar um álbum");
+    Console.WriteLine("Digite 7 para exibir os detalhes de uma banda");
+    Console.WriteLine("Digite 8 para registrar um podcast");
+    Console.WriteLine("Digite 9 para registrar um episódio");
+    Console.WriteLine("Digite 10 para exibir detalhes de um podcast");
     Console.WriteLine("Digite -1 para sair");
 
     Console.Write("\nDigite a sua opção: ");

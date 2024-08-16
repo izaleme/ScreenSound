@@ -10,7 +10,7 @@ internal class MenuMostrarMusicas : Menu
         ExibirTituloDaOpcao("Exibindo todas as músicas registradas na nossa aplicação");
 
         ScreenSoundAPI.Filters.LinqOrder csLinq = new ScreenSoundAPI.Filters.LinqOrder();
-        csLinq.ExibirMusicasOrdenadas();
+        //csLinq.ExibirMusicasOrdenadas();
 
         Console.Write("\nAperte qualquer tecla para voltar ao menu principal...");
         Console.ReadKey();

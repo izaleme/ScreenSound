@@ -1,6 +1,19 @@
 ﻿using ScreenSound.Menus;
 using ScreenSound.Models;
 using OpenAI_API;
+using ScreenSound.Banco;
+
+try
+{
+    var connection = new Connection().ObterConexao(); // A variável com "using" é descartada no fim do escopo.
+    connection.Open();
+    Console.WriteLine(connection.State);
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+return;
 
 // Adicionando dados de base Bandas
 Banda wallows = new Banda("Wallows");

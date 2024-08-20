@@ -5,15 +5,25 @@ using ScreenSound.Banco;
 
 try
 {
-    var connection = new Connection().ObterConexao(); // A variável com "using" é descartada no fim do escopo.
-    connection.Open();
-    Console.WriteLine(connection.State);
+    var artistaDAL = new ArtistaDAL();
+    artistaDAL.Adicionar(new Artista("Yaelokre", "Yaelokre is a storytelling project run by Keath Ósk, honouring wonderment through song and illustration, portraying an ensemble of four young minstrels known as \"The Lark\"."));
+
+    var listaArtistas = artistaDAL.Listar();
+    
+    foreach (var artista in listaArtistas)
+    {
+        Console.WriteLine(artista);
+    }
 }
 catch (Exception ex)
 {
     Console.WriteLine(ex.Message);
 }
 return;
+
+//MenuMostrarMusicas teste = new MenuMostrarMusicas();
+//teste.Executar();
+//return;
 
 // Adicionando dados de base Bandas
 Banda wallows = new Banda("Wallows");

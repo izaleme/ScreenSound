@@ -2,11 +2,20 @@
 using ScreenSound.Models;
 using OpenAI_API;
 using ScreenSound.Banco;
+using System.Linq.Expressions;
 
 try
 {
-    var artistaDAL = new ArtistaDAL();
-    artistaDAL.Adicionar(new Artista("Yaelokre", "Yaelokre is a storytelling project run by Keath Ósk, honouring wonderment through song and illustration, portraying an ensemble of four young minstrels known as \"The Lark\"."));
+    var context = new ScreenSoundContext();
+    var artistaDAL = new ArtistaDAL(context);
+
+    //var novoArtista = new Artista("Yaelokre", "Yaelokre is a storytelling project run by Keath Ósk, honouring wonderment through song and illustration, portraying an ensemble of four young minstrels known as \"The Lark\".");
+    //artistaDAL.Adicionar(novoArtista);
+
+    var novoArtista = new Artista("Yaelokre", "Yaelokre is a storytelling project run by Keath Ósk, honouring wonderment through song and illustration.") { Id = 3002 };
+    //artistaDAL.Atualizar(novoArtista);
+
+    artistaDAL.Deletar(novoArtista);
 
     var listaArtistas = artistaDAL.Listar();
     

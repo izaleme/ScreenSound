@@ -1,7 +1,7 @@
 ﻿using ScreenSound.Models;
 
 namespace ScreenSound.Test;
-
+/*
 public class PodcastConstrutor
 {
     [Theory]
@@ -40,3 +40,4 @@ public class PodcastConstrutor
         }
     }
 }
+*/

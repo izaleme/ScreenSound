@@ -1,4 +1,5 @@
-﻿using ScreenSound.Models;
+﻿using ScreenSound.Banco;
+using ScreenSound.Models;
 
 namespace ScreenSound.Menus;
 
@@ -9,7 +10,7 @@ internal class MenuSair : Menu
         FecharConsole();
     }
 
-    public override void Executar(Dictionary<string, Banda> bandasRegistradas)
+    public override void Executar(ArtistaDAL artistaDAL)
     {
         FecharConsole();
     }

@@ -1,27 +1,28 @@
-﻿using ScreenSound.Models;
+﻿using ScreenSound.Banco;
+using ScreenSound.Models;
 
 namespace ScreenSound.Menus;
 
 internal class MenuExibirDetalhesBanda : Menu
 {
-    public override void Executar(Dictionary<string, Banda> bandasRegistradas) // override sobrescreve o método
+    public override void Executar(ArtistaDAL artistaDAL)
     {
-        base.Executar(bandasRegistradas); // Executa o método pai
-        ExibirTituloDaOpcao("Exibir detalhes da banda");
-        Console.Write("Digite o nome da banda que deseja conhecer melhor: ");
+        base.Executar(artistaDAL);
+        ExibirTituloDaOpcao("Exibir detalhes do Artista/Banda");
 
-        string nomeDaBanda = Console.ReadLine()!.ToLower();
-        if (bandasRegistradas.ContainsKey(nomeDaBanda))
+        Console.Write("Digite o nome do artista ou banda que deseja conhecer melhor: ");
+        string nomeDoArtista = Console.ReadLine()!;
+        var artistaRecuperado = artistaDAL.RecuperarPeloNome(nomeDoArtista);
+        if (artistaRecuperado is not null)
         {
-            Banda banda = bandasRegistradas[nomeDaBanda];
-            Console.WriteLine(banda.Resumo);
-            Console.WriteLine($"A média da banda {nomeDaBanda} é {banda.Media}.");
+            Console.WriteLine(artistaRecuperado.Resumo);
+            Console.WriteLine($"A média do artista/banda {artistaRecuperado} é {artistaRecuperado.Media}.");
 
-            if (banda.Albuns.Count > 0)
+            if (artistaRecuperado.Albuns.Count > 0)
             {
                 Console.WriteLine("\nDiscografia:");
 
-                foreach (Album album in banda.Albuns)
+                foreach (Album album in artistaRecuperado.Albuns)
                 {
                     Console.WriteLine($"{album.Nome} -> {album.Media}");
                 }
@@ -33,7 +34,7 @@ internal class MenuExibirDetalhesBanda : Menu
         }
         else
         {
-            Console.WriteLine($"A banda {nomeDaBanda} não foi encontrada!");
+            Console.WriteLine($"O artista/banda {artistaRecuperado} não foi encontrado!");
         }
 
         Console.Write("\nAperte qualquer tecla para voltar ao menu principal ");

@@ -5,9 +5,9 @@ internal class Musica
     #region Attributes/Properties
 
     private int? anoLancamento;
-
+    public int Id { get; set; }
     public string Nome { get; }
-    public Banda Artista { get; }
+    public Artista Artista { get; }
     public int Duracao { get; set; }
     public bool Disponivel { get; set; }
 
@@ -26,7 +26,12 @@ internal class Musica
 
     #region Builders
 
-    public Musica(Banda artista, string nome)
+    public Musica(string nome)
+    {
+        Nome = nome;
+    }
+
+    public Musica(Artista artista, string nome)
     {
         Artista = artista;
         Nome = nome;
@@ -55,6 +60,12 @@ internal class Musica
         {
             Console.WriteLine("Adquira o plano Plus+");
         }
+    }
+
+    public override string ToString()
+    {
+        return @$"Id: {Id}
+        Nome: {Nome}";
     }
 
     #endregion

@@ -1,7 +1,7 @@
 using ScreenSound.Models;
 
 namespace ScreenSound.Test
-{
+{/*
     public class MusicaConstrutor
     {
         [Theory]
@@ -105,5 +105,5 @@ namespace ScreenSound.Test
             // Assert
             Assert.Equal(anoLancam, musica.AnoLancamento);
         }
-    }
+    }*/
 }

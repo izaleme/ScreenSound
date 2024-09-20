@@ -1,28 +1,32 @@
-﻿using ScreenSound.Models;
+﻿using ScreenSound.Banco;
+using ScreenSound.Models;
 
 namespace ScreenSound.Menus;
 
 internal class MenuAvaliarBanda : Menu
 {
-    public override void Executar(Dictionary<string, Banda> bandasRegistradas)
+    public override void Executar(ArtistaDAL artistaDAL)
     {
-        base.Executar(bandasRegistradas); // Executa o método pai
-        ExibirTituloDaOpcao("Avaliar banda");
-        Console.Write("Digite o nome da banda que deseja avaliar: ");
-        string nomeDaBanda = Console.ReadLine()!;
-        if (bandasRegistradas.ContainsKey(nomeDaBanda))
+        base.Executar(artistaDAL);
+        ExibirTituloDaOpcao("Avaliar Artista/Banda");
+
+        Console.Write("Digite o nome do artista ou banda que deseja avaliar: ");
+
+        string nomeDoArtista = Console.ReadLine()!;
+        var artistaRecuperado = artistaDAL.RecuperarPeloNome(nomeDoArtista);
+
+        if (artistaRecuperado is not null)
         {
-            Banda banda = bandasRegistradas[nomeDaBanda];
-            Console.Write($"Qual a nota que a banda {nomeDaBanda} merece: ");
+            Console.Write($"Qual a nota que o artista {artistaRecuperado} merece: ");
             Avaliacao nota = Avaliacao.Parse(Console.ReadLine()!);
-            banda.AdicionarNota(nota);
-            Console.WriteLine($"\nA nota {nota.Nota} foi registrada com sucesso para a banda {nomeDaBanda}");
+            artistaRecuperado.AdicionarNota(nota);
+            Console.WriteLine($"\nA nota {nota.Nota} foi registrada com sucesso para o artista {artistaRecuperado}.");
             Thread.Sleep(1850);
             Console.Clear();
         }
         else
         {
-            Console.WriteLine($"\nA banda {nomeDaBanda} não foi encontrada!");
+            Console.WriteLine($"\nO artista {artistaRecuperado} não foi encontrado!");
             Console.Write("Retornando ao menu principal... ");
             Thread.Sleep(2200);
             Console.Clear();

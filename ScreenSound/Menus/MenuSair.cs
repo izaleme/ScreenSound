@@ -10,7 +10,7 @@ internal class MenuSair : Menu
         FecharConsole();
     }
 
-    public override void Executar(ArtistaDAL artistaDAL)
+    public override void Executar(DAL<Artista> artistaDAL)
     {
         FecharConsole();
     }

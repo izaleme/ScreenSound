@@ -5,7 +5,7 @@ using ScreenSound.Banco;
 using System.Linq.Expressions;
 
 var context = new ScreenSoundContext();
-var artistaDAL = new ArtistaDAL(context);
+var artistaDAL = new DAL<Artista>(context);
 
 // Adicionando dados de base Podcasts
 Episodio ep1 = new Episodio(1, "Radio Silêncio", 25);
@@ -44,7 +44,6 @@ catch (Exception err)
 }
 // ------------------------------------------------------------------------------------------------------ */
 
-// StringComparer.OrdinalIgnoreCase: Permite que o usuário encontre a banda sem problemas de letras maiúsculas ou minúsculas
 Dictionary<string, Podcast> podcastsRegistrados = new Dictionary<string, Podcast>(StringComparer.OrdinalIgnoreCase)
 {
     { podcast1.Nome, podcast1 },

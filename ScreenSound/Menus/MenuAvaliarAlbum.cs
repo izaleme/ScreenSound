@@ -5,14 +5,14 @@ namespace ScreenSound.Menus;
 
 internal class MenuAvaliarAlbum : Menu
 {
-    public override void Executar(ArtistaDAL artistaDAL)
+    public override void Executar(DAL<Artista> artistaDAL)
     {
         base.Executar(artistaDAL);
         ExibirTituloDaOpcao("Avaliar álbum");
 
         Console.Write("Digite o nome do artista/banda que deseja avaliar: ");
         string nomeDoArtista = Console.ReadLine()!;
-        var artistaRecuperado = artistaDAL.RecuperarPeloNome(nomeDoArtista);
+        var artistaRecuperado = artistaDAL.RecuperarPor(a => a.Nome.Equals(nomeDoArtista));
 
         if (artistaRecuperado is not null)
         {

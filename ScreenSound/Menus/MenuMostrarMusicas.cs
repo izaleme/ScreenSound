@@ -38,7 +38,7 @@ internal class MenuMostrarMusicas : Menu
         base.Executar(artistaDAL);
         ExibirTituloDaOpcao("Exibindo todas as músicas registradas na nossa aplicação");
 
-        List<ScreenSoundAPI.Models.Musica> musicas = new List<ScreenSoundAPI.Models.Musica>
+        List<ScreenSoundAPI.Models.Musica> musicas = new()
         {
             new ScreenSoundAPI.Models.Musica
             {
@@ -88,7 +88,7 @@ internal class MenuMostrarMusicas : Menu
         };
 
         LinqOrder csLinq = new LinqOrder();
-        LinqOrder.ExibirArtistasOrdenados(musicas);
+        LinqOrder.ExibirMusicasOrdenadas(musicas);
 
         Console.Write("\nAperte qualquer tecla para voltar ao menu principal...");
         Console.ReadKey();

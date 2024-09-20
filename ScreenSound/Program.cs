@@ -55,13 +55,14 @@ Dictionary<int, Menu> opcoes = new();
 opcoes.Add(1, new MenuMostrarMusicas());
 opcoes.Add(2, new MenuMostrarArtistas());
 opcoes.Add(3, new MenuRegistrarArtista());
-opcoes.Add(4, new MenuRegistrarAlbum());
-opcoes.Add(5, new MenuAvaliarBanda());
-opcoes.Add(6, new MenuAvaliarAlbum());
-opcoes.Add(7, new MenuExibirDetalhesBanda());
-opcoes.Add(8, new MenuRegistrarPodcast());
-opcoes.Add(9, new MenuRegistrarEpisodio());
-opcoes.Add(10, new MenuExibirDetalhesPodcast());
+opcoes.Add(4, new MenuRegistrarMusica());
+opcoes.Add(5, new MenuRegistrarAlbum());
+opcoes.Add(6, new MenuAvaliarBanda());
+opcoes.Add(7, new MenuAvaliarAlbum());
+opcoes.Add(8, new MenuExibirDetalhesBanda());
+opcoes.Add(9, new MenuRegistrarPodcast());
+opcoes.Add(10, new MenuRegistrarEpisodio());
+opcoes.Add(11, new MenuExibirDetalhesPodcast());
 opcoes.Add(-1, new MenuSair());
 
 void ExibirLogo()
@@ -84,13 +85,14 @@ void ExibirOpcoesDoMenu()
     Console.WriteLine("\nDigite 1 para exibir todas as músicas");
     Console.WriteLine("Digite 2 para mostrar todos os artistas");
     Console.WriteLine("Digite 3 para registrar um artista/banda");
-    Console.WriteLine("Digite 4 para registrar o álbum de um artista/banda");
-    Console.WriteLine("Digite 5 para avaliar um artista/banda");
-    Console.WriteLine("Digite 6 para avaliar um álbum");
-    Console.WriteLine("Digite 7 para exibir os detalhes de um artista/banda");
-    Console.WriteLine("Digite 8 para registrar um podcast");
-    Console.WriteLine("Digite 9 para registrar um episódio");
-    Console.WriteLine("Digite 10 para exibir detalhes de um podcast");
+    Console.WriteLine("Digite 4 para registrar uma música");
+    Console.WriteLine("Digite 5 para registrar o álbum de um artista/banda");
+    Console.WriteLine("Digite 6 para avaliar um artista/banda");
+    Console.WriteLine("Digite 7 para avaliar um álbum");
+    Console.WriteLine("Digite 8 para exibir os detalhes de um artista/banda");
+    Console.WriteLine("Digite 9 para registrar um podcast");
+    Console.WriteLine("Digite 10 para registrar um episódio");
+    Console.WriteLine("Digite 11 para exibir detalhes de um podcast");
     Console.WriteLine("Digite -1 para sair");
 
     Console.Write("\nDigite a sua opção: ");

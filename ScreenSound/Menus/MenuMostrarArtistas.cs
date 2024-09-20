@@ -10,9 +10,20 @@ internal class MenuMostrarArtistas : Menu
         base.Executar(artistaDAL);
         ExibirTituloDaOpcao("Exibindo todos os artistas/bandas registrados na nossa aplicação");
 
-        foreach (var artista in artistaDAL.Listar())
+        try
         {
-            Console.WriteLine($"Artista: {artista}");
+            var artistas = artistaDAL.Listar() ?? Enumerable.Empty<Artista>();
+            foreach (var artista in artistas)
+            {
+                Console.WriteLine($"Artista: {artista}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.Clear();
+            Console.WriteLine($"\n[ERRO] \nOcorreu um erro! Contate o suporte! \n{ex.Message}");
+            //Console.ReadKey();
+            //Environment.Exit(0);
         }
 
         Console.WriteLine("\nDigite uma tecla para voltar ao menu principal");

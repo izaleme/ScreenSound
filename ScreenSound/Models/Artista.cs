@@ -1,22 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ScreenSound.Models;
 
-internal class Artista : IAvaliavel
+public class Artista : IAvaliavel
 {
     private List<Musica> musicas = new List<Musica>();
     private List<Album> albuns = new List<Album>();
     private List<Avaliacao> notas = new List<Avaliacao>();
 
+    [Key]
+    public int Id { get; set; }
     public string Nome { get; }
     public string FotoPerfil { get; set; }
     public string Bio { get; set; }
-    public int Id { get; set; }
-
+    
     public double Media
     {
         get
@@ -29,6 +31,8 @@ internal class Artista : IAvaliavel
     public List<Album> Albuns => albuns;
 
     public string? Resumo { get; set; }
+
+    public Artista() { }
 
     public Artista(string nome, string bio)
     {

@@ -1,7 +1,12 @@
-﻿namespace ScreenSound.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-internal class Genero
+namespace ScreenSound.Models;
+
+public class Genero
 {
+    [Key]
+    public int Id { get; set; }
+
     public string? Nome { get; set; }
 
     public string? Descricao { get; set; }

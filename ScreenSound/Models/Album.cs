@@ -1,18 +1,24 @@
-﻿namespace ScreenSound.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-internal class Album : IAvaliavel
+namespace ScreenSound.Models;
+
+public class Album : IAvaliavel
 {
     private List<Musica> musicas = new List<Musica>();
     private List<Avaliacao> notas = new();
+
+    [Key]
+    public int Id { get; set; }
+    public string Nome { get; }
+    public int DuracaoTotal => musicas.Sum(m => m.Duracao);
+    public List<Musica> Musicas => musicas;
+
+    public Album() { }
 
     public Album(string nome)
     {
         Nome = nome;
     }
-
-    public string Nome { get; }
-    public int DuracaoTotal => musicas.Sum(m => m.Duracao);
-    public List<Musica> Musicas => musicas;
 
     public double Media
     {

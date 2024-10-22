@@ -1,10 +1,15 @@
-﻿namespace ScreenSound.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-internal class Musica
+namespace ScreenSound.Models;
+
+public class Musica
 {
     #region Attributes/Properties
 
     private int? anoLancamento;
+
+    [Key]
     public int Id { get; set; }
     public string Nome { get; }
     public Artista Artista { get; }
@@ -20,16 +25,15 @@ internal class Musica
         set => anoLancamento = value <= 0 ? (int?)null : value;
     }
 
-    public Genero? Genero { get; set; }
+    public List<Genero> Generos { get; set; }
 
     #endregion
 
     #region Builders
 
-    public Musica(string nome)
-    {
-        Nome = nome;
-    }
+    public Musica() { }
+
+    public Musica(string nome) => Nome = nome;
 
     public Musica(Artista artista, string nome)
     {
